@@ -87,6 +87,7 @@ if exist linux_bak.tar (
 	adb connect %ip%:5555
 	adb connect %ip%:5555
 	adb root
+	adb remount
 	adb push linux_bak.tar /sdcard/linux.tar
 	adb push aolinstall /sdcard/aolinstall
 	adb push aoluninstall /sdcard/aoluninstall
