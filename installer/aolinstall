@@ -1,6 +1,6 @@
 cat <<'EOF' > /system/etc/init.ghost.linux
 if [ -f /sdcard/aolrun ]; then
-	if [[ ! -f /data/linux/dev/null ]]; then
+	if [[ ! -f /data/linux/dev/kmsg ]]; then
 	        # internal linux init script
 		ROOT=/data/linux
 	        busybox sysctl -w net.ipv4.ip_forward=1
