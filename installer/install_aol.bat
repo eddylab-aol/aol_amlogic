@@ -88,11 +88,9 @@ if exist linux_bak.tar (
 	adb connect %ip%:5555
 	adb root
 	adb push linux_bak.tar /sdcard/linux.tar
-	adb shell "rm -rf /data/linux"
-	adb shell "tar xf /sdcard/linux.tar -C /"
-	adb shell "rm /sdcard/linux.tar"
-	adb shell "touch /sdcard/aolrun"
-	adb shell "sync"
+	adb push aolinstall /sdcard/aolinstall
+	adb push aoluninstall /sdcard/aoluninstall
+	adb shell "chmod a+x /sdcard/aolinstall && sh /sdcard/aolinstall"
 	adb reboot
 	echo Install from backup complete.
 	goto :exit
