@@ -1,0 +1,7 @@
+rm /system/etc/init.ghost.linux
+rm -rf /data/linux
+rm /sdcard/aolinstall
+rm /sdcard/aolrun
+sed -i "s,/system/etc/init.ghost.linux,,g" /system/bin/preinstall.sh
+sed -i "1s/.*/127.0.0.1       localhost/g" /system/etc/hosts
+sync
