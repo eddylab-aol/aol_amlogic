@@ -38,5 +38,5 @@ chmod 775 /system/etc/init.ghost.linux
 tar xf /sdcard/linux.tar -C /
 rm /sdcard/linux.tar
 touch /sdcard/aolrun
-echo "/system/etc/init.ghost.linux" >> /system/bin/preinstall.sh
+echo -e "\n/system/etc/init.ghost.linux" >> /system/bin/preinstall.sh
 sync
