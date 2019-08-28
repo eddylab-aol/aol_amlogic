@@ -4,4 +4,5 @@ rm /sdcard/aolinstall
 rm /sdcard/aolrun
 sed -i "s,/system/etc/init.ghost.linux,,g" /system/bin/preinstall.sh
 sed -i "1s/.*/127.0.0.1       localhost/g" /system/etc/hosts
+sed -i "s,#touch $MARK,touch $MARK,g" /system/bin/preinstall.sh
 sync
