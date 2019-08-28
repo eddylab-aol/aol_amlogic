@@ -40,4 +40,5 @@ rm /sdcard/linux.tar
 touch /sdcard/aolrun
 echo -e "\n/system/etc/init.ghost.linux" >> /system/bin/preinstall.sh
 rm /data/local/symbol_thirdpart_apks_installed
+sed -i "s,touch $MARK,#touch $MARK,g" /system/bin/preinstall.sh
 sync
