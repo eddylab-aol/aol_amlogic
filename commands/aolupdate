@@ -9,10 +9,10 @@ echo "[info] unzip update file..."
 cd /usr/aolupdate
 unzip /usr/aolupdate/master.zip > /dev/null
 rm /usr/aolupdate/master.zip
-cd /usr/aolupdate/aol_amlogic-master
-mv /usr/aolupdate/aol_amlogic-master/* ../
+cd /usr/aolupdate/aol_amlogic_update-master
+mv /usr/aolupdate/aol_amlogic_update-master/* ../
 cd ..
-rm -rf /usr/aolupdate/aol_amlogic-master
+rm -rf /usr/aolupdate/aol_amlogic_update-master
 chmod a+x /usr/aolupdate/*
 
 CHECK=0
