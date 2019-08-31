@@ -9,5 +9,7 @@
 ![img](imgs/ipaddr.png)  
 - Check Android Debugging prompt (Allow)
 - Select Menu (install,uninstall,backup,backupinstall)  
+
+
 ![img](imgs/menu.png)  
 
