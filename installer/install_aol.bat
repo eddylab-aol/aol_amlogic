@@ -53,6 +53,7 @@ adb connect %ip%:5555
 adb connect %ip%:5555
 adb root
 adb remount
+adb shell "rm /sdcard/aol*"
 adb push linux.tar /sdcard/linux.tar
 adb push aolinstall /sdcard/aolinstall
 adb push aoluninstall /sdcard/aoluninstall
@@ -132,3 +133,11 @@ goto :exit
 
 :exit
 pause
+
+
+
+
+
+
+
+
