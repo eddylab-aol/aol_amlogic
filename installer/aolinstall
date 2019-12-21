@@ -1,4 +1,10 @@
 cat <<'EOF' > /system/etc/init.ghost.linux
+
+# wait android boot complete
+while [ -z $(getprop sys.boot_completed) ]; do
+        sleep 1
+done
+
 if [ -f /sdcard/aolrun ]; then
 	if [[ ! -f /data/linux/dev/kmsg ]]; then
 	        # internal linux init script
@@ -29,11 +35,10 @@ if [ -f /sdcard/aolrun ]; then
 	        busybox mkdir $ROOT/vendor
 	        busybox mount -o bind /vendor $ROOT/vendor
 			busybox mount -o bind /storage $ROOT/storage
-			sleep 60
 			
 			# start sysv-init script
 			busybox chroot $ROOT /bin/su root -c "/etc/init.d/rc 3" > /dev/null 2>&1
-		
+			
 			# kodi hostname patch
 			LINUXHOSTNAME=`hostname`
 			if [ "`grep $LINUXHOSTNAME /system/etc/hosts -c`" == "0" ]; then
@@ -45,12 +50,16 @@ if [ -f /sdcard/aolrun ]; then
 	fi
 fi
 EOF
+
 chmod 775 /system/etc/init.ghost.linux
 rm -rf /data/linux
 tar xf /sdcard/linux.tar -C /
 rm /sdcard/linux.tar
 touch /sdcard/aolrun
-echo -e "\n/system/etc/init.ghost.linux" >> /system/bin/preinstall.sh
+if [[ -z `grep "init.ghost.linux" /system/bin/preinstall.sh` ]]; then
+	echo -e "\n/system/etc/init.ghost.linux" >> /system/bin/preinstall.sh
+fi
 rm /data/local/symbol_thirdpart_apks_installed
 sed -i "s,touch $MARK,#touch $MARK,g" /system/bin/preinstall.sh
+
 sync
