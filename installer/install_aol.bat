@@ -1,7 +1,7 @@
 @echo off
 mode con cols=60 lines=10
 title AndroidOverLinux Installer
-echo VER : alpha
+echo VER : beta
 echo Online Manual : http://androidoverlinux.djjproject.com
 
 set /p ip=enter device ip address : 
@@ -41,6 +41,16 @@ if "%sel%"=="1" (
 )
 
 :install
+adb root
+adb shell "rm /sdcard/aolrun"
+echo reboot device
+adb shell "sync"
+adb reboot
+echo Wait device rebooting.
+timeout 60
+adb disconnect
+adb connect %ip%:5555
+adb connect %ip%:5555
 adb root
 adb remount
 adb push linux.tar /sdcard/linux.tar
@@ -122,11 +132,3 @@ goto :exit
 
 :exit
 pause
-
-
-
-
-
-
-
-
