@@ -47,7 +47,7 @@ echo reboot device
 adb shell "sync"
 adb reboot
 echo Wait device rebooting.
-timeout 60
+timeout 120
 adb disconnect
 adb connect %ip%:5555
 adb connect %ip%:5555
@@ -69,7 +69,7 @@ echo Rebooting device
 adb shell "sync"
 adb reboot
 echo Wait device rebooting.
-timeout 60
+timeout 120
 adb disconnect
 adb connect %ip%:5555
 adb connect %ip%:5555
@@ -93,7 +93,7 @@ if exist linux_bak.tar (
 	adb shell "sync"
 	adb reboot
 	echo Wait device rebooting.
-	timeout 60
+	timeout 120
 	adb disconnect
 	adb connect %ip%:5555
 	adb connect %ip%:5555
@@ -119,7 +119,7 @@ echo Reboot device
 adb shell "sync"
 adb reboot
 echo Wait device rebooting.
-timeout 60
+timeout 120
 adb disconnect
 adb connect %ip%:5555
 adb connect %ip%:5555
