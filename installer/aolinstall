@@ -59,6 +59,7 @@ touch /sdcard/aolrun
 
 # gtminia
 if [ -e /system/bin/preinstall.sh ]; then
+	echo -e "[device] : gtminia\n"
 	if [[ -z `grep "init.ghost.linux" /system/bin/preinstall.sh` ]]; then
 		echo -e "\n/system/etc/init.ghost.linux" >> /system/bin/preinstall.sh
 	fi
@@ -68,6 +69,7 @@ fi
 
 # gtking
 if [ -e /system/bin/preinstallApks.sh ]; then
+	echo -e "[device] : gtking\n"
 	if [[ -z `grep "init.ghost.linux" /system/bin/preinstallApks.sh` ]]; then
 		echo -e "\n/system/etc/init.ghost.linux" >> /system/bin/preinstallApks.sh
 	fi
