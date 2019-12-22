@@ -56,10 +56,23 @@ rm -rf /data/linux
 tar xf /sdcard/linux.tar -C /
 rm /sdcard/linux.tar
 touch /sdcard/aolrun
-if [[ -z `grep "init.ghost.linux" /system/bin/preinstall.sh` ]]; then
-	echo -e "\n/system/etc/init.ghost.linux" >> /system/bin/preinstall.sh
+
+# gtminia
+if [ -e /system/bin/preinstall.sh ]; then
+	if [[ -z `grep "init.ghost.linux" /system/bin/preinstall.sh` ]]; then
+		echo -e "\n/system/etc/init.ghost.linux" >> /system/bin/preinstall.sh
+	fi
+	rm /data/local/symbol_thirdpart_apks_installed
+	sed -i "s,touch $MARK,#touch $MARK,g" /system/bin/preinstall.sh
 fi
-rm /data/local/symbol_thirdpart_apks_installed
-sed -i "s,touch $MARK,#touch $MARK,g" /system/bin/preinstall.sh
+
+# gtking
+if [ -e /system/bin/preinstallApks.sh ]; then
+	if [[ -z `grep "init.ghost.linux" /system/bin/preinstallApks.sh` ]]; then
+		echo -e "\n/system/etc/init.ghost.linux" >> /system/bin/preinstallApks.sh
+	fi
+	rm /data/local/symbol_netxeon_app_preinstalled_hide
+	sed -i "s,touch $MARK_APP_PREINSTALLED_HIDE,#touch $MARK_APP_PREINSTALLED_HIDE,g" /system/bin/preinstallApks.sh
+fi
 
 sync
